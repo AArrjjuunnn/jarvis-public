@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JARVIS">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>J.A.R.V.I.S.</title>
+  <style>
+    :root { color-scheme: dark; --bg:#050b14; --panel:#0b1726; --line:#173650; --cyan:#5ce7ff; --muted:#8aa9bd; }
+    * { box-sizing:border-box }
+    body { margin:0; min-height:100vh; background:radial-gradient(ellipse at 50% 10%,#102b42 0,#07111f 42%,#03070d 100%); color:#e9f8ff; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif; }
+    main { width:min(760px,100%); margin:auto; padding:calc(20px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom)); }
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .brand { letter-spacing:.24em; color:var(--cyan); font-weight:800; font-size:13px; }
+    .status { font-size:11px; color:#8fffd0; border:1px solid #1d665b; border-radius:99px; padding:6px 10px; }
+    h1 { text-align:center; font-size:clamp(30px,8vw,52px); letter-spacing:.18em; margin:34px 0 4px; text-shadow:0 0 22px #2dcfff66; }
+    .sub { text-align:center; color:var(--muted); font-size:12px; letter-spacing:.2em; margin-bottom:28px; }
+    .reactor-wrap { display:grid; place-items:center; margin:12px 0 26px; }
+    .reactor { width:142px; aspect-ratio:1; border-radius:50%; border:2px solid #49dfff; box-shadow:0 0 18px #22cfff88,inset 0 0 22px #22cfff55; display:grid; place-items:center; position:relative; background:radial-gradient(circle,#1b7190 0,#0b253b 42%,#06101d 68%); }
+    .reactor:before,.reactor:after { content:""; position:absolute; inset:10px; border:1px solid #5ce7ff99; border-radius:50%; }
+    .reactor:after { inset:-9px; border-style:dashed; opacity:.55; animation:spin 24s linear infinite; }
+    .reactor span { font-size:31px; color:#d9fbff; text-shadow:0 0 16px #5ce7ff; }
+    @keyframes spin { to { transform:rotate(360deg) } }
+    .panel { background:#091523dd; border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 12px 38px #0005; }
+    .label { color:var(--cyan); font-size:10px; letter-spacing:.2em; margin-bottom:10px; }
+    #log { min-height:150px; max-height:250px; overflow:auto; display:flex; flex-direction:column; gap:12px; }
+    .msg { font-size:14px; line-height:1.5; }
+    .msg .who { color:var(--cyan); font-size:10px; letter-spacing:.12em; display:block; margin-bottom:3px; }
+    .msg.user .who { color:#a4b8ca; }
+    .controls { display:flex; gap:9px; margin-top:14px; }
+    input { min-width:0; flex:1; background:#030b14; color:#fff; border:1px solid #21425b; border-radius:11px; padding:14px; font-size:16px; outline:none; }
+    input:focus { border-color:var(--cyan); }
+    button { border:1px solid #26708c; color:#dffaff; background:#10334a; border-radius:11px; padding:0 16px; font-weight:700; }
+    button:active { transform:scale(.98); }
+    .quick { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin-top:12px; }
+    .quick button { min-height:42px; font-size:12px; }
+    .foot { color:#6f8da3; font-size:11px; text-align:center; margin-top:18px; line-height:1.5; }
+    a { color:var(--cyan); }
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="brand">STARK INDUSTRIES // PERSONAL SYSTEM</div><div class="status" id="connection">CHECKING...</div></header>
+  <h1>J.A.R.V.I.S.</h1>
+  <div class="sub">JUST A RATHER VERY INTELLIGENT SYSTEM</div>
+  <div class="reactor-wrap"><div class="reactor"><span>J</span></div></div>
+  <section class="panel">
+    <div class="label">SYSTEM CONSOLE</div>
+    <div id="log" aria-live="polite">
+      <div class="msg"><span class="who">JARVIS</span>Systems online. I can tell the time, calculate, save notes, and open web searches. Type a command below.</div>
+    </div>
+    <form class="controls" id="commandForm">
+      <input id="command" autocomplete="off" placeholder="Enter a command..." aria-label="Command">
+      <button type="submit">SEND</button>
+    </form>
+    <div class="quick">
+      <button type="button" data-command="What time is it?">TIME</button>
+      <button type="button" data-command="What is today's date?">DATE</button>
+      <button type="button" data-command="Help">HELP</button>
+      <button type="button" data-command="Tell me a fact">RANDOM FACT</button>
+    </div>
+  </section>
+  <div class="foot">VOICE OUTPUT: supported where your browser allows it.<br>For voice input on iPhone, use the microphone on the iOS keyboard.</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
