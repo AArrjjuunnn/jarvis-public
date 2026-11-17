@@ -1,13 +1,10 @@
 {
   "name": "JARVIS Personal Assistant",
   "short_name": "JARVIS",
-  "description": "A lightweight personal assistant prototype.",
+  "description": "A personal web-based AI assistant",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
-  "background_color": "#050b14",
+  "background_color": "#07111f",
   "theme_color": "#07111f",
-  "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
-  ]
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
